@@ -34,8 +34,30 @@ no more than a high school level education."),
       y = "Number of Respondents")
 ```
 
+# Visualization 2
+
 ```{r}
 
+PPCS |>
+  filter(NUM_CONT < 75) |>
+  ggplot() +
+  geom_point(aes(x = NUM_MOVES,
+                 y = NUM_CONT),
+             alpha = 0.1,
+             color = "pink") +
+  geom_smooth(mapping = aes(x = NUM_MOVES,
+                            y = NUM_CONT),
+              method = "lm",
+              se = FALSE,
+              color = "black") +
+  scale_x_continuous(breaks = seq(0, 75, 5)) +
+  theme_minimal() +
+  labs(title = paste("Frequent moving is asociated with more police contacts."),
+       subtitle = "Survey Respondents from 2002, 2008, 2011",
+       caption = paste("Source: Police-Public Contact Survey and", 
+"National Crime Victimization Survey, Accessed Through ICPSR"),
+       x = "Number of times moved in the last 5 years",
+       y = "Amount of police contacts in past 12 months")
 ```
 
 ```{r}
