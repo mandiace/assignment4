@@ -7,10 +7,37 @@ editor: visual
 ---
 
 ```{r}
-1 + 1
+library(haven)
+PPCS <- read_dta("PPCS.dta")
+View(PPCS)
+library(tidyverse)
+```
+
+# Visualization 1
+
+```{r}
+
+PPCS |>
+  mutate(as.numeric(ARRESTED)) |>
+  filter(ARRESTED == 1) |>
+  ggplot(aes(x = EDUCATION_SUB)) +
+  geom_histogram(binwidth=1,
+                 fill = "pink",
+                 color = "black") +
+  scale_x_continuous(breaks = seq(0, 18, 1)) +
+  theme_minimal() + 
+  labs(title = paste0("Of survey respondents who have been arrested, most have 
+no more than a high school level education."),
+      subtitle = "Includes responses from 2002, 2008, 2011",
+      caption = "Source: Police-Public Contact Survey and National Crime Victimization Survey, Accessed Through ICPSR", 
+      x = "Years of Education",
+      y = "Number of Respondents")
 ```
 
 ```{r}
-#| echo: false
-2 * 2
+
+```
+
+```{r}
+
 ```
