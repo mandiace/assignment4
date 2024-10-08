@@ -9,7 +9,6 @@ editor: visual
 ```{r}
 library(haven)
 PPCS <- read_dta("PPCS.dta")
-View(PPCS)
 library(tidyverse)
 ```
 
@@ -60,6 +59,28 @@ PPCS |>
        y = "Amount of police contacts in past 12 months")
 ```
 
+# Visualization 3
+
 ```{r}
+PPCS |>
+  mutate(TOTAL_VALUE_LOSS = VAL_LOSS2_INC_P23HH + VAL_LOSS2_INC_P23PER) |>
+  mutate(MSA_STATUS = case_when(
+    MSA_STATUS == 1 ~ "Urban",
+    MSA_STATUS == 2 ~ "Suburban",
+    MSA_STATUS == 3 ~ "Rural")) |>
+  ggplot(aes(
+    x = factor(MSA_STATUS), 
+    y = TOTAL_VALUE_LOSS))+
+  geom_boxplot(outlier.shape = NA,
+               fill = "pink",
+               color = "black")+
+  scale_y_continuous(limits = c(0,750)) +
+  theme_minimal()+
+  labs(title = "Stolen property values are, on average, highest amongst suburban victims.",
+         subtitle = paste("Distribution of reported value of cash/property lost",
+         "by Metropolitan Statistical Area (MSA) type"),
+         caption = "Source: Police-Public Contact Survey and National Crime Victimization Survey, Accessed through ICPSR",
+         x = "MSA type",
+         y = "Total value of cash & property lost (USD)")
 
 ```
