@@ -1,0 +1,16 @@
+---
+title: "Visualizing Police-Public Contact and Crime Victimization"
+author: "Mandi Acevedo and Bela Walkin"
+format: html
+self-contained: true
+editor: visual
+---
+
+```{r}
+1 + 1
+```
+
+```{r}
+#| echo: false
+2 * 2
+```
