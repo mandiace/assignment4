@@ -84,3 +84,47 @@ PPCS |>
          y = "Total value of cash & property lost (USD)")
 
 ```
+
+# Visualization 4
+
+```{r}
+PPCS |>
+  mutate(CONTACT = ifelse(NUM_CONT > 0, 1, 0),
+         C4_RACE = case_when(
+           C4_RACE == 1 ~ "White",
+           C4_RACE == 2 ~ "Black",
+           C4_RACE == 3 ~ "Hispanic",
+           C4_RACE == 4 ~ "Other / Multiracial")) |>
+  group_by(C4_RACE) |>
+  filter(PPCS_YEAR == 2011) |>
+  summarize(
+    total = n(),
+    contact = replace_na(
+      sum(CONTACT == 1),0),
+    no_contact = replace_na(
+      (total - contact),0)) |>
+  pivot_longer(
+    cols = c(contact, no_contact),
+    names_to = "category",
+    values_to = "count") |>
+  mutate(category = ifelse(category == "contact","yes","no")) |>
+  ggplot(aes( 
+    x = reorder(C4_RACE, total),
+    y = count,
+    fill = category)) +
+  geom_bar(stat="identity") +
+  geom_text(aes(label = count),
+            position = position_stack(vjust = 0.5),
+            size = 3) +
+  scale_fill_manual(values = c("yes" = "pink", "no" = "lightgreen")) +
+  labs(title = paste("White individuals are less likely to have had",
+                     "police contact"),
+       subtitle = paste("Proportion of 2011 respondents who have had at least one",
+                        "face-to-face contact with police in past 12 months"),
+       caption = paste("Source: Police-Public Contact Survey and National",
+                       "Crime Victimization Survey, Accessed through ICPSR"),
+       y = "Respondent count",
+       fill = "Ever had police contact?") +
+  theme_minimal() +
+  theme(axis.title.x = element_blank())
+```
