@@ -34,7 +34,7 @@ no more than a high school level education."),
       y = "Number of Respondents")
 ```
 
-Understanding who comes into contact with police, and subsequently gets arrested, is extremely improtant when researching how to lower police-citizens contact that results in arrests. Of those individuals in the Police-Citizen contact survey, most individuals have no more than a high school diploma (12 yeas of education). This demonstrates that those interacting with the jsutice system in negative ways may be more likely to stop education earlier. 
+Understanding who comes into contact with police, and subsequently gets arrested, is extremely important when researching how to lower police-citizens contact that results in arrests. Of those individuals in the Police-Citizen contact survey, most individuals have no more than a high school diploma (12 yeas of education). This demonstrates that those interacting with the justice system in negative ways may be more likely to stop education after high school.
 
 
 # Visualization 2
@@ -64,7 +64,7 @@ PPCS |>
        y = "Amount of police contacts in past 12 months")
 ```
 
-Of individuals who have had less than 75 contatcs with police officers in the last 12 months (non-outliers), frequent moving is associated with higher police contacts. Individuals who have less stable home-bases are more likley to have contacts with police. This could mean that moving leads to higher likelihood of victimization or increased criminal-behavior for an individual, as some examples.
+Of individuals who have had less than 75 contacts with police officers in the last 12 months (non-outliers), frequent moving is associated with higher police contacts. Individuals who have less stable home bases are more likely to have had contacts with police. This could mean that moving more leads a person to have a higher likelihood of victimization or increased criminal-behavior for an individual, as some examples.
 
 
 # Visualization 3
