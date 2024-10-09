@@ -141,4 +141,4 @@ PPCS |>
   theme(axis.title.x = element_blank())
 ```
 
-White respondents make up the majority of this sample, yet no white respondents reported any face-to-face contact with the police in 2011.
+White respondents make up the majority of this sample, yet no white respondents reported any face-to-face contact with the police in 2011. Meanwhile, 125/754 hispanic respondents and 108/650 black respondents (17% each) reported at least once instance of face-to-face contact with the police in the past 12 months. In short, respondents of color are more likely than white respondents to report having had recent face-to-face contact with police.
