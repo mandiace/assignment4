@@ -12,6 +12,7 @@ PPCS <- read_dta("PPCS.dta")
 library(tidyverse)
 ```
 
+
 # Visualization 1
 
 ```{r}
@@ -32,7 +33,9 @@ no more than a high school level education."),
       x = "Years of Education",
       y = "Number of Respondents")
 ```
-## Understanding who comes into contact with police, and subsequently gets arrested, is extremely improtant when researching how to lower police-citizens contact that results in arrests. Of those individuals in the Police-Citizen contact survey, most individuals have no more than a high school diploma (12 yeas of education). This demonstrates that those interacting with the jsutice system in negative ways may be more likely to stop education earlier. 
+
+Understanding who comes into contact with police, and subsequently gets arrested, is extremely improtant when researching how to lower police-citizens contact that results in arrests. Of those individuals in the Police-Citizen contact survey, most individuals have no more than a high school diploma (12 yeas of education). This demonstrates that those interacting with the jsutice system in negative ways may be more likely to stop education earlier. 
+
 
 # Visualization 2
 
@@ -60,7 +63,9 @@ PPCS |>
        x = "Number of times moved in the last 5 years",
        y = "Amount of police contacts in past 12 months")
 ```
-## Of individuals who have had less than 75 contatcs with police officers in the last 12 months (non-outliers), frequent moving is associated with higher police contacts. Individuals who have less stable home-bases are more likley to have contacts with police. This could mean that moving leads to higher liklihood of victimization or increased criminal-behavior for an individual, as some examples.
+
+Of individuals who have had less than 75 contatcs with police officers in the last 12 months (non-outliers), frequent moving is associated with higher police contacts. Individuals who have less stable home-bases are more likley to have contacts with police. This could mean that moving leads to higher likelihood of victimization or increased criminal-behavior for an individual, as some examples.
+
 
 # Visualization 3
 
@@ -71,6 +76,7 @@ PPCS |>
     MSA_STATUS == 1 ~ "Urban",
     MSA_STATUS == 2 ~ "Suburban",
     MSA_STATUS == 3 ~ "Rural")) |>
+  filter(!is.na(TOTAL_VALUE_LOSS)) |>
   ggplot(aes(
     x = factor(MSA_STATUS), 
     y = TOTAL_VALUE_LOSS))+
@@ -87,6 +93,9 @@ PPCS |>
          y = "Total value of cash & property lost (USD)")
 
 ```
+
+The average total value of cash and property lost in an instance of victimization is relatively constant - around 50-75 USD - regardless of urbanity. Suburbanites, on average, lose slightly more value than urban and rural individuals. However, urban individuals have the widest distribution of cash lost, with a maximum of ~500 USD lost. Rural individuals have the narrowest distribution; the 25th to 75 percentiles only range from 0 to about 125 USD, compared to 0 to 200 USD for suburban and urban individuals.
+
 
 # Visualization 4
 
@@ -131,3 +140,5 @@ PPCS |>
   theme_minimal() +
   theme(axis.title.x = element_blank())
 ```
+
+White respondents make up the majority of this sample, yet no white respondents reported any face-to-face contact with the police in 2011.
