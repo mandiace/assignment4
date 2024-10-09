@@ -55,6 +55,7 @@ PPCS |>
               color = "black",
               linetype = "dashed") +
   scale_x_continuous(breaks = seq(0, 75, 5)) +
+  annotate("text", x = 40, y = 30, label = "Most respondents have less than \n 10 moves and less than 10 contacts.") +
   theme_minimal() +
   labs(title = paste("Frequent moving is asociated with more police contacts."),
        subtitle = "Survey Respondents from 2002, 2008, 2011",
@@ -127,7 +128,7 @@ PPCS |>
   geom_bar(stat="identity") +
   geom_text(aes(label = count),
             position = position_stack(vjust = 0.5),
-            size = 3) +
+            size = 2) +
   scale_fill_manual(values = c("yes" = "pink", "no" = "lightgreen")) +
   labs(title = paste("White individuals are less likely to have had",
                      "police contact"),
