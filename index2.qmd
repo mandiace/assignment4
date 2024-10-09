@@ -6,7 +6,7 @@ self-contained: true
 editor: visual
 ---
 
-```{r}
+```{r warning=FALSE}
 library(haven)
 PPCS <- read_dta("PPCS.dta")
 library(tidyverse)
@@ -15,7 +15,7 @@ library(tidyverse)
 
 # Visualization 1
 
-```{r}
+```{r warning=FALSE}
 
 PPCS |>
   mutate(as.numeric(ARRESTED)) |>
@@ -39,7 +39,7 @@ Understanding who comes into contact with police, and subsequently gets arrested
 
 # Visualization 2
 
-```{r}
+```{r warning=FALSE}
 
 PPCS |>
   filter(NUM_CONT < 75) |>
@@ -69,7 +69,7 @@ Of individuals who have had less than 75 contacts with police officers in the la
 
 # Visualization 3
 
-```{r}
+```{r warning=FALSE}
 PPCS |>
   mutate(TOTAL_VALUE_LOSS = VAL_LOSS2_INC_P23HH + VAL_LOSS2_INC_P23PER) |>
   mutate(MSA_STATUS = case_when(
@@ -99,7 +99,7 @@ The average total value of cash and property lost in an instance of victimizatio
 
 # Visualization 4
 
-```{r}
+```{r warning=FALSE}
 PPCS |>
   mutate(CONTACT = ifelse(NUM_CONT > 0, 1, 0),
          C4_RACE = case_when(
